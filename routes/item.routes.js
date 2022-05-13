@@ -16,7 +16,17 @@ router.route('/create-item').post((req, res, next) => {
 });
 // READ Item
 router.route('/').get((req, res) => {
-  itemSchema.find((error, data) => {
+  itemSchema.find({ deleted: false }, (error, data) => {
+    if (error) {
+      return next(error)
+    } else {
+      res.json(data)
+    }
+  })
+})
+// READ Deleted Items
+router.route('/deleted-items').get((req, res) => {
+  itemSchema.find({ deleted: true }, (error, data) => {
     if (error) {
       return next(error)
     } else {
