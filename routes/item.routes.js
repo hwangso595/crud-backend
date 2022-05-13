@@ -63,7 +63,7 @@ router.route('/delete-item/:id').delete((req, res, next) => {
   itemSchema.findByIdAndUpdate(req.params.id, {
     $set: {
         deleted: true,
-        deleteMessage: req.body.deleteMessage
+        deleteMessage: req.body.deleteMessage || ""
     }
   },(error, data) => {
     if (error) {
