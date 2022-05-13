@@ -4,8 +4,7 @@ let cors = require('cors');
 let bodyParser = require('body-parser');
 require('dotenv').config();
 
-const itemRoute = require('./routes/item.routes')
-console.log(process.env.DATABASE_URL)
+const itemRoute = require('./routes/item.routes');
 mongoose
   .connect(process.env.DATABASE_URL)
   .then((x) => {
